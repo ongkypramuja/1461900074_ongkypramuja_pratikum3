@@ -18,37 +18,29 @@
                 <a class="nav-link" href="{{url('/')}}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Buku</a>
+                <a class="nav-link" href="{{ route('buku.index') }}">Buku</a>
             </li>
         </ul>
     </div>
 </nav>
     <div class="container mt-3">
-        <h2 class="mt-5">Table Rak Buku</h2>
+        <h2 class="mt-5">Form Buku</h2>
         
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Judul</th>
-                    <th scope="col">Tahun Terbit</th>
-                    <th scope="col">Jenis</th>
-                 
-                </tr>
-            </thead>
-            <tbody>
-                
-            @foreach($data as $item)
-			<tr>
-                <td>{{ $loop->iteration }} </td>
-                <td>{{ $item->judul }}</td>
-                <td>{{ $item->tahun_terbit }}</td>
-                <td>{{ $item->jenis }}</td>
-                
-            </tr>
-			@endforeach
-            </tbody>
-        </table>
+        <form action="{{ route('buku.store') }}" method="post">
+            @csrf
+
+            <div class="form-group">
+                <label for="">judul Buku</label>
+                <input type="text" name="judul" id="" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="">Tahun Terbit</label>
+                <input type="text" name="tahun_terbit" id="tahun_terbit" class="form-control">
+            </div>
+
+            <input type="submit" value="simpan" class="btn btn-success">
+        </form>
     </div>
 </body>
 

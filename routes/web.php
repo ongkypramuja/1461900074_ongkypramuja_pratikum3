@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RakBukuController;
+use App\Http\Controllers\BukuController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +15,4 @@ use App\Http\Controllers\RakBukuController;
 */
 
 Route::get('/', [RakBukuController::class,'index']);
+Route::resource('buku',BukuController::class);

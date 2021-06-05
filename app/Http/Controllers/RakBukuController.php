@@ -11,11 +11,10 @@ class RakBukuController extends Controller
     {
         $data = DB::table("rak_buku")
             ->join("buku", "buku.id", "rak_buku.id_buku")  
-            ->join("jenis_buku", "jenis_buku.id", "rak_buku.id_jenis_buku")  
+            ->join("jenis_buku", "jenis_buku.id", "rak_buku.id_jenis_buku")
+            ->where("buku.judul", "LIKE", "%".$request->search."%")
             ->get();
 
-        // dd($data);
-
-        return view("dashboard",compact('data'));
+        return view("0074dashboard",compact('data'));
     }
 }
